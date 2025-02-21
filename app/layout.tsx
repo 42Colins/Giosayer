@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500'] });
 
 export const metadata: Metadata = {
-  title: 'g-archives.fr',
+  title: 'g',
   description: 'Visual Artist & Photographer Portfolio',
 };
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-          <link rel="icon" href="/icon.ico" type="image/ico" />
+          <link rel="icon" href="/favicon.ico" type="image/ico" />
       <body className={inter.className}>{children}</body>
     </html>
   );
