@@ -5,8 +5,12 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '500'] });
 
 export const metadata: Metadata = {
-  title: 'g',
+  title: 'g-archives.fr',
   description: 'Visual Artist & Photographer Portfolio',
+  icons: {
+    icon: '/Blank.png', // Default favicon
+    shortcut: '/Blank.png'
+  },
 };
 
 export default function RootLayout({
