@@ -8,7 +8,7 @@ const binders = [
     title: "Nature Collection",
     description: "A series of landscape and wildlife photographs",
     position: { left: '38.6%', width: '2.2%' , top: '40%', height: '20%'},
-    src: "binder01/binder01.png",
+    src: "/binder01/binder01.png",
     content: [
       { image: "/gio.jpg"},
       { image: "/gio3.jpg"},
@@ -20,10 +20,10 @@ const binders = [
     title: "Urban Series",
     description: "City life and architecture studies",
     position: { left: '41.1%', width: '2.2%' , top: '40%', height: '20%'},
-    src: "binder02/binder02.png",
+    src: "/binder02/binder02.png",
     content: [
-      { image: "binder02/dessin012.png"},
-      { image: "binder02/dessin050.png"}
+      { image: "/binder02/dessin012.png"},
+      { image: "/binder02/dessin050.png"}
     ]
   },
   {
@@ -31,23 +31,23 @@ const binders = [
     title: "Seascapes",
     description: "Ocean and coastal photography",
     position: { left: '43.7%', width: '2.2%' , top: '40%', height: '20%' },
-    src: "binder03/binder03.png",
+    src: "/binder03/binder03.png",
     content: [
-      { image: "binder03/dessin009.png"},
-      { image: "binder03/dessin023.png"},
-      { image: "binder03/dessin024.png"},
-      { image: "binder03/dessin025.png"},
-      { image: "binder03/dessin027.png"},
-      { image: "binder03/dessin028.png"},
-      { image: "binder03/dessin029.png"},
-      { image: "binder03/dessin030.png"},
-      { image: "binder03/dessin031.png"},
-      { image: "binder03/dessin032.png"},
-      { image: "binder03/dessin033.png"},
-      { image: "binder03/dessin034.png"},
-      { image: "binder03/dessin045.png"},
-      { image: "binder03/dessin046.png"},
-      { image: "binder03/dessin052.png"}
+      { image: "/binder03/dessin009.png"},
+      { image: "/binder03/dessin023.png"},
+      { image: "/binder03/dessin024.png"},
+      { image: "/binder03/dessin025.png"},
+      { image: "/binder03/dessin027.png"},
+      { image: "/binder03/dessin028.png"},
+      { image: "/binder03/dessin029.png"},
+      { image: "/binder03/dessin030.png"},
+      { image: "/binder03/dessin031.png"},
+      { image: "/binder03/dessin032.png"},
+      { image: "/binder03/dessin033.png"},
+      { image: "/binder03/dessin034.png"},
+      { image: "/binder03/dessin045.png"},
+      { image: "/binder03/dessin046.png"},
+      { image: "/binder03/dessin052.png"}
     ]
   },
   {
@@ -55,13 +55,13 @@ const binders = [
     title: "Birds in Flight",
     description: "Dynamic captures of birds in motion",
     position: { left: '46.2%', width: '2.2%' , top: '40%', height: '20%'},
-    src: "binder04/binder04.png",
+    src: "/binder04/binder04.png",
     content: [
-      { image: "binder04/dessin015.png"},
-      { image: "binder04/dessin017.png"},
-      { image: "binder04/dessin020.png"},
-      { image: "binder04/dessin021.png"},
-      { image: "binder04/dessin061.png"}
+      { image: "/binder04/dessin015.png"},
+      { image: "/binder04/dessin017.png"},
+      { image: "/binder04/dessin020.png"},
+      { image: "/binder04/dessin021.png"},
+      { image: "/binder04/dessin061.png"}
     ]
   },
   {
@@ -69,10 +69,10 @@ const binders = [
     title: "Patterns",
     description: "Natural and artificial pattern studies",
     position: { left: '48.7%', width: '2.2%' , top: '40%', height: '20%' },
-    src: "binder05/binder05.png",
+    src: "/binder05/binder05.png",
     content: [
-      { image: "binder05/dessin014.png"},
-      { image: "binder05/dessin016.png"}
+      { image: "/binder05/dessin014.png"},
+      { image: "/binder05/dessin016.png"}
     ]
   },
   {
@@ -80,17 +80,17 @@ const binders = [
     title: "Light Studies",
     description: "Experiments with natural light",
     position: { left: '51.2%', width: '2.2%' , top: '40%', height: '20%'},
-    src: "binder06/binder06.png",
+    src: "/binder06/binder06.png",
     content: [
-      { image: "binder06/dessin035.png"},
-      { image: "binder06/dessin036.png"},
-      { image: "binder06/dessin038.png"},
-      { image: "binder06/dessin039.png"},
-      { image: "binder06/dessin040.png"},
-      { image: "binder06/dessin042.png"},
-      { image: "binder06/dessin044.png"},
-      { image: "binder06/dessin047.png"},
-      { image: "binder06/dessin048.png"}
+      { image: "/binder06/dessin035.png"},
+      { image: "/binder06/dessin036.png"},
+      { image: "/binder06/dessin038.png"},
+      { image: "/binder06/dessin039.png"},
+      { image: "/binder06/dessin040.png"},
+      { image: "/binder06/dessin042.png"},
+      { image: "/binder06/dessin044.png"},
+      { image: "/binder06/dessin047.png"},
+      { image: "/binder06/dessin048.png"}
     ]
   },
   {
@@ -98,19 +98,19 @@ const binders = [
     title: "Abstract",
     description: "Abstract interpretations of everyday scenes",
     position: { left: '53.8%', width: '2.2%' , top: '40%', height: '20%' },
-    src: "binder07/binder07.png",
+    src: "/binder07/binder07.png",
     content: [
-      { image: "binder07/dessin005.png"},
-      { image: "binder07/dessin007.png"},
-      { image: "binder07/dessin008.png"},
-      { image: "binder07/dessin051.png"},
-      { image: "binder07/dessin053.png"},
-      { image: "binder07/dessin054.png"},
-      { image: "binder07/dessin055.png"},
-      { image: "binder07/dessin058.png"},
-      { image: "binder07/dessin059.png"},
-      { image: "binder07/dessin060.png"},
-      { image: "binder07/dessin062.png"}
+      { image: "/binder07/dessin005.png"},
+      { image: "/binder07/dessin007.png"},
+      { image: "/binder07/dessin008.png"},
+      { image: "/binder07/dessin051.png"},
+      { image: "/binder07/dessin053.png"},
+      { image: "/binder07/dessin054.png"},
+      { image: "/binder07/dessin055.png"},
+      { image: "/binder07/dessin058.png"},
+      { image: "/binder07/dessin059.png"},
+      { image: "/binder07/dessin060.png"},
+      { image: "/binder07/dessin062.png"}
     ]
   },
   {
@@ -118,15 +118,15 @@ const binders = [
     title: "Portraits",
     description: "Artistic portrait photography",
     position: { left: '56.4%', width: '2.2%' , top: '40%', height: '20%' },
-    src: "binder08/binder08.png",
+    src: "/binder08/binder08.png",
     content: [
-      { image: "binder08/dessin018.png"},
-      { image: "binder08/dessin019.png"},
-      { image: "binder08/dessin022.png"},
-      { image: "binder08/dessin026.png"},
-      { image: "binder08/dessin037.png"},
-      { image: "binder08/dessin041.png"},
-      { image: "binder08/dessin057.png"}
+      { image: "/binder08/dessin018.png"},
+      { image: "/binder08/dessin019.png"},
+      { image: "/binder08/dessin022.png"},
+      { image: "/binder08/dessin026.png"},
+      { image: "/binder08/dessin037.png"},
+      { image: "/binder08/dessin041.png"},
+      { image: "/binder08/dessin057.png"}
     ]
   },
   {
@@ -134,13 +134,13 @@ const binders = [
     title: "Minimalism",
     description: "Minimalist photography studies",
     position: { left: '59.5%', width: '2.2%' , top: '40%', height: '20%' },
-    src: "binder09/binder09.png",
+    src: "/binder09/binder09.png",
     content: [
-      { image: "binder09/dessin003.png"},
-      { image: "binder09/dessin010.png"},
-      { image: "binder09/dessin013.png"},
-      { image: "binder09/dessin049.png"},
-      { image: "binder09/dessin063.png"}
+      { image: "/binder09/dessin003.png"},
+      { image: "/binder09/dessin010.png"},
+      { image: "/binder09/dessin013.png"},
+      { image: "/binder09/dessin049.png"},
+      { image: "/binder09/dessin063.png"}
     ]
   }
 ];
