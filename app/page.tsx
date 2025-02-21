@@ -7,7 +7,7 @@ const binders = [
     id: 1,
     title: "Nature Collection",
     description: "A series of landscape and wildlife photographs",
-    position: { left: '13.2%', width: '7.5%' },
+    position: { left: '38.6%', width: '2.2%' , top: '40%', height: '20%'},
     src: "binder01/binder01.png",
     content: [
       { image: "/gio.jpg"},
@@ -19,7 +19,7 @@ const binders = [
     id: 2,
     title: "Urban Series",
     description: "City life and architecture studies",
-    position: { left: '21%', width: '7.5%' },
+    position: { left: '41.1%', width: '2.2%' , top: '40%', height: '20%'},
     src: "binder02/binder02.png",
     content: [
       { image: "binder02/dessin012.png"},
@@ -30,7 +30,7 @@ const binders = [
     id: 3,
     title: "Seascapes",
     description: "Ocean and coastal photography",
-    position: { left: '29%', width: '7.5%' },
+    position: { left: '43.7%', width: '2.2%' , top: '40%', height: '20%' },
     src: "binder03/binder03.png",
     content: [
       { image: "binder03/dessin009.png"},
@@ -54,7 +54,7 @@ const binders = [
     id: 4,
     title: "Birds in Flight",
     description: "Dynamic captures of birds in motion",
-    position: { left: '37.4%', width: '7.5%' },
+    position: { left: '46.2%', width: '2.2%' , top: '40%', height: '20%'},
     src: "binder04/binder04.png",
     content: [
       { image: "binder04/dessin015.png"},
@@ -68,7 +68,7 @@ const binders = [
     id: 5,
     title: "Patterns",
     description: "Natural and artificial pattern studies",
-    position: { left: '45.2%', width: '7.5%' },
+    position: { left: '48.7%', width: '2.2%' , top: '40%', height: '20%' },
     src: "binder05/binder05.png",
     content: [
       { image: "binder05/dessin014.png"},
@@ -79,7 +79,7 @@ const binders = [
     id: 6,
     title: "Light Studies",
     description: "Experiments with natural light",
-    position: { left: '53.2%', width: '7.5%' },
+    position: { left: '51.2%', width: '2.2%' , top: '40%', height: '20%'},
     src: "binder06/binder06.png",
     content: [
       { image: "binder06/dessin035.png"},
@@ -97,7 +97,7 @@ const binders = [
     id: 7,
     title: "Abstract",
     description: "Abstract interpretations of everyday scenes",
-    position: { left: '61.2%', width: '7.5%' },
+    position: { left: '53.8%', width: '2.2%' , top: '40%', height: '20%' },
     src: "binder07/binder07.png",
     content: [
       { image: "binder07/dessin005.png"},
@@ -117,7 +117,7 @@ const binders = [
     id: 8,
     title: "Portraits",
     description: "Artistic portrait photography",
-    position: { left: '69.5%', width: '7.5%' },
+    position: { left: '56.4%', width: '2.2%' , top: '40%', height: '20%' },
     src: "binder08/binder08.png",
     content: [
       { image: "binder08/dessin018.png"},
@@ -133,7 +133,7 @@ const binders = [
     id: 9,
     title: "Minimalism",
     description: "Minimalist photography studies",
-    position: { left: '79.2%', width: '7.5%' },
+    position: { left: '59.5%', width: '2.2%' , top: '40%', height: '20%' },
     src: "binder09/binder09.png",
     content: [
       { image: "binder09/dessin003.png"},
@@ -172,7 +172,7 @@ export default function Home() {
         // Main shelf view
         <div className="relative w-full max-w-5xl aspect-[16/9]">
           <img
-            src="/binders.png"
+            src="/Background.png"
             alt="Binders on shelf"
             className="w-full h-full object-contain"
           />
