@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-// Updated binder data with precise positions for all 9 binders
+// Updated binder data with precise positions f or all 9 binders
 const binders = [
   {
     id: 1,
