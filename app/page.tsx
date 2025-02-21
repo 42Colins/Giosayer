@@ -186,27 +186,8 @@ export default function Home() {
               onClick={() => setSelectedBinder(binder.id)}
             />
           ))}
-          
-          {/* Instructions */}
-          <p className="text-center text-gray-500 mt-4">
-            Click on any binder to view its content
-          </p>
         </div>
       ) : (
-        // Single image view
-        // <div className="relative w-full max-w-5xl">
-        // <div className="fixed top-4 left-4">
-        //   <button 
-        //     onClick={handleBack}
-        //     className="text-gray-600 flex w-32 h-32"
-        //   >
-        //     <img 
-        //       src={binders.find(b => b.id === selectedBinder)?.src}
-        //       // className="w-full h-full object-contain" 
-        //     />
-        //   </button>
-        // </div>
-        // Single image view - Now with larger sizing
         <div className="relative w-full max-w-7xl">
           <div className="fixed top-4 left-4">
             <button 
