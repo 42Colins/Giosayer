@@ -231,7 +231,7 @@ export default function Home() {
           {/* Signature button */}
           <div 
             className="absolute transform -rotate-12"
-            style={{ right: '30%', bottom: '25%', width: 'fit-content', height: 'fit-content' }}
+            style={{ right: '30%', bottom: '0%', width: 'fit-content', height: 'fit-content' }}
           >
             <button 
               onClick={() => window.open('https://www.instagram.com/giosayer/', '_blank')}
@@ -240,8 +240,8 @@ export default function Home() {
                 margin: 0,
                 background: 'none',
                 border: 'none',
-                width: '200px',
-                height: '141px',
+                width: '85px',
+                height: '60px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
