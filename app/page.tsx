@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Loader2 } from 'lucide-react';
 
 // Updated binder data with precise posi tions f or all 9 binders
 const binders = [
@@ -10,9 +11,6 @@ const binders = [
     position: { left: '38.6%', width: '2.2%' , top: '40%', height: '20%'},
     src: "/binder01/binder01.png",
     content: [
-      { image: "/gio.jpg"},
-      { image: "/gio3.jpg"},
-      { image: "/template.jpg"}
     ]
   },
   {
@@ -136,7 +134,6 @@ const binders = [
     position: { left: '59.5%', width: '2.2%' , top: '40%', height: '20%' },
     src: "/binder09/binder09.png",
     content: [
-      { image: "/binder09/dessin003.png"},
       { image: "/binder09/dessin010.png"},
       { image: "/binder09/dessin013.png"},
       { image: "/binder09/dessin049.png"},
@@ -145,9 +142,54 @@ const binders = [
   }
 ];
 
+const logo = {
+  position: { left: '41.1%', width: '2.2%' , top: '40%', height: '20%'}  
+}
+
+const preloadImage = (src: string) => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = src;
+    img.onload = resolve;
+    img.onerror = reject;
+  });
+};
+
 export default function Home() {
   const [selectedBinder, setSelectedBinder] = useState<number | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  
+  useEffect(() => {
+    const preloadAllImages = async () => {
+      const totalImages = binders.reduce((count, binder) => count + binder.content.length, 0);
+      let loadedImages = 0;
+
+      try {
+        // First preload all binder thumbnails
+        await Promise.all(
+          binders.map(binder => preloadImage(binder.src))
+        );
+
+        // Then preload all content images
+        for (const binder of binders) {
+          await Promise.all(
+            binder.content.map(async (item) => {
+              await preloadImage(item.image);
+              loadedImages++;
+              setLoadingProgress(Math.round((loadedImages / totalImages) * 100));
+            })
+          );
+        }
+      } catch (error) {
+        console.error('Failed to preload images:', error);
+      }
+      setInitialLoading(false);
+    };
+
+    preloadAllImages();
+  }, []);
 
   const handleBack = () => {
     setSelectedBinder(null);
@@ -173,7 +215,6 @@ export default function Home() {
         <div className="relative w-full max-w-5xl aspect-[16/9]">
           <img
             src="/Background.png"
-            alt="Binders on shelf"
             className="w-full h-full object-contain"
           />
           
@@ -181,11 +222,45 @@ export default function Home() {
           {binders.map((binder) => (
             <div
               key={binder.id}
-              className="absolute top-0 h-full cursor-pointer transition-all duration-300"
+              className="absolute top-0 h-full cursor-pointer transition-all duration-300 hover:opacity-75"
               style={binder.position}
               onClick={() => setSelectedBinder(binder.id)}
             />
           ))}
+
+          {/* Signature button */}
+          <div 
+            className="absolute transform -rotate-12"
+            style={{ right: '30%', bottom: '25%', width: 'fit-content', height: 'fit-content' }}
+          >
+            <button 
+              onClick={() => window.open('https://www.instagram.com/giosayer/', '_blank')}
+              style={{ 
+                padding: 0,
+                margin: 0,
+                background: 'none',
+                border: 'none',
+                width: '200px',
+                height: '141px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                pointerEvents: 'none'
+              }}
+            >
+              <img
+                src="/signature.png"
+                alt="Signature"
+                style={{ 
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  pointerEvents: 'auto'
+                }}
+              />
+            </button>
+          </div>
         </div>
       ) : (
         <div className="relative w-full max-w-7xl">
@@ -195,30 +270,29 @@ export default function Home() {
               className="text-gray-600 flex w-24 h-48"
             >
               <img 
-                src={binders.find(b => b.id === selectedBinder)?.src}
+                src={selectedBinderContent?.src}
                 className="w-full h-full object-contain" 
               />
             </button>
           </div>
           <div className="flex justify-center items-center w-full h-screen">
             <div className="w-2/3 h-2/3 flex justify-center items-center">
-        {/* Image container */}
+              {/* Image container */}
               <div
                 className="aspect-[16/9] relative cursor-pointer flex justify-center items-center"
                 onClick={handleNextImage}
               >
                 {currentImage && (
-                <img
-                  src={currentImage.image}
-                  className="w-full h-full object-cover"
-                />
-              )}
+                  <img
+                    src={currentImage.image}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    )}
+      )}
     </main>
   );
 }
-
