@@ -209,54 +209,53 @@ export default function Home() {
   const currentImage = selectedBinderContent?.content[currentImageIndex];
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4">
+    <main className="min-h-screen w-screen overflow-hidden flex flex-col items-center justify-center">
       {!selectedBinder ? (
-        // Main shelf view
-        <div className="relative w-full max-w-5xl aspect-[16/9]">
+        <div className="relative w-full max-w-5xl aspect-[16/9] mx-auto">
           <img
             src="/Background.png"
-            className="w-full h-full object-contain"
+            className="absolute inset-0 w-full h-full object-contain"
           />
           
           {/* Clickable binder areas */}
           {binders.map((binder) => (
             <div
               key={binder.id}
-              className="absolute top-0 h-full cursor-pointer transition-all duration-300 hover:opacity-75"
-              style={binder.position}
+              className="absolute cursor-pointer transition-all duration-300 hover:opacity-75"
+              style={{
+                ...binder.position,
+                WebkitTransform: 'translateZ(0)', // Fix for Safari
+                transform: 'translateZ(0)'
+              }}
               onClick={() => setSelectedBinder(binder.id)}
             />
           ))}
 
           {/* Signature button */}
           <div 
-            className="absolute transform -rotate-12"
-            style={{ right: '30%', bottom: '0%', width: 'fit-content', height: 'fit-content' }}
+            className="absolute"
+            style={{ 
+              right: '30%', 
+              bottom: '0%',
+              transform: 'rotate(-12deg)',
+              WebkitTransform: 'rotate(-12deg)', // Fix for Safari
+              transformOrigin: 'center center',
+              width: '85px',
+              height: '60px'
+            }}
           >
             <button 
               onClick={() => window.open('https://www.instagram.com/giosayer/', '_blank')}
-              style={{ 
-                padding: 0,
-                margin: 0,
-                background: 'none',
-                border: 'none',
-                width: '85px',
-                height: '60px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                pointerEvents: 'none'
-              }}
+              className="w-full h-full p-0 border-0 bg-transparent cursor-pointer"
             >
               <img
                 src="/signature.png"
                 alt="Signature"
+                className="w-full h-full object-contain"
+                draggable="false"
                 style={{ 
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'contain',
-                  pointerEvents: 'auto'
+                  WebkitTouchCallout: 'none' as const,
+                  userSelect: 'none' as const
                 }}
               />
             </button>
