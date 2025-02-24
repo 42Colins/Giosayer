@@ -35,3 +35,43 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
 }
+
+/* Cross-browser compatibility fixes */
+.signature-container {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+/* Fix Safari scaling */
+@supports (-webkit-touch-callout: none) {
+  .signature-container img {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+}
+
+/* Responsive signature sizing */
+@media (max-width: 768px) {
+  .signature-container {
+    width: clamp(50px, 5vw, 70px) !important;
+    height: clamp(18px, 1.8vw, 25px) !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .signature-container {
+    width: clamp(80px, 6vw, 120px) !important;
+    height: clamp(29px, 2.2vw, 43px) !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .signature-container {
+    width: clamp(100px, 7vw, 140px) !important;
+    height: clamp(36px, 2.5vw, 50px) !important;
+  }
+}

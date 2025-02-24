@@ -160,7 +160,7 @@ export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [initialLoading, setInitialLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
-  
+
   useEffect(() => {
     const preloadAllImages = async () => {
       const totalImages = binders.reduce((count, binder) => count + binder.content.length, 0);
@@ -189,6 +189,15 @@ export default function Home() {
     };
 
     preloadAllImages();
+  }, []);
+
+  // Add this useEffect for initial image load
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/signature.png';
+    img.onload = () => {
+      console.log('Signature image dimensions:', img.naturalWidth, 'x', img.naturalHeight);
+    };
   }, []);
 
   const handleBack = () => {
@@ -224,28 +233,25 @@ export default function Home() {
               className="absolute cursor-pointer transition-all duration-300 hover:opacity-75"
               style={{
                 ...binder.position,
-                WebkitTransform: 'translateZ(0)', // Fix for Safari
+                WebkitTransform: 'translateZ(0)',
                 transform: 'translateZ(0)'
               }}
               onClick={() => setSelectedBinder(binder.id)}
             />
           ))}
-
           {/* Signature button */}
           <div 
-            className="absolute"
+            className="absolute signature-container"
             style={{ 
-              right: '30%', 
-              bottom: '0%',
+              right: '35%',
+              bottom: '33%',
               transform: 'rotate(-12deg)',
-              WebkitTransform: 'rotate(-12deg)', // Fix for Safari
-              transformOrigin: 'center center',
-              width: '85px',
-              height: '60px'
+              WebkitTransform: 'rotate(-12deg)',
+              transformOrigin: 'center'
             }}
           >
             <button 
-              onClick={() => window.open('https://www.instagram.com/giosayer/', '_blank')}
+              onClick={() => window.location.href = '/about'}
               className="w-full h-full p-0 border-0 bg-transparent cursor-pointer"
             >
               <img
@@ -253,10 +259,6 @@ export default function Home() {
                 alt="Signature"
                 className="w-full h-full object-contain"
                 draggable="false"
-                style={{ 
-                  WebkitTouchCallout: 'none' as const,
-                  userSelect: 'none' as const
-                }}
               />
             </button>
           </div>
@@ -278,13 +280,13 @@ export default function Home() {
             <div className="w-2/3 h-2/3 flex justify-center items-center">
               {/* Image container */}
               <div
-                className="aspect-[16/9] relative cursor-pointer flex justify-center items-center"
+                className="w-full h-full relative cursor-pointer flex justify-center items-center"
                 onClick={handleNextImage}
               >
                 {currentImage && (
                   <img
                     src={currentImage.image}
-                    className="w-full h-full object-cover"
+                    className="max-w-full max-h-full w-auto h-auto object-contain"
                   />
                 )}
               </div>
