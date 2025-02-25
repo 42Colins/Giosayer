@@ -2,30 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Reset and Normalization */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Fix for Safari flexbox gap */
-.flex {
-  gap: 0;
-}
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
@@ -36,42 +12,39 @@ body {
   background: rgb(var(--background-rgb));
 }
 
-/* Cross-browser compatibility fixes */
-.signature-container {
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-  -webkit-perspective: 1000;
-  perspective: 1000;
+/* Cross-browser normalization */
+.gallery-container {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
-/* Fix Safari scaling */
+.gallery-container img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Safari specific fixes */
 @supports (-webkit-touch-callout: none) {
-  .signature-container img {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+  .gallery-container {
+    height: calc(100vh - 80px);
+    max-height: calc((100vw * 9) / 16);
   }
 }
 
-/* Responsive signature sizing */
-@media (max-width: 768px) {
-  .signature-container {
-    width: clamp(50px, 5vw, 70px) !important;
-    height: clamp(18px, 1.8vw, 25px) !important;
+/* Firefox specific fixes */
+@-moz-document url-prefix() {
+  .gallery-container {
+    height: calc(100vh - 80px);
+    max-height: calc((100vw * 9) / 16);
   }
 }
 
-@media (min-width: 769px) {
-  .signature-container {
-    width: clamp(80px, 6vw, 120px) !important;
-    height: clamp(29px, 2.2vw, 43px) !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  .signature-container {
-    width: clamp(100px, 7vw, 140px) !important;
-    height: clamp(36px, 2.5vw, 50px) !important;
-  }
-}

@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 // Updated binder data with precise posi tions f or all 9 binders
 const binders = [
@@ -156,6 +157,7 @@ const preloadImage = (src: string) => {
 };
 
 export default function Home() {
+  const router = useRouter();
   const [selectedBinder, setSelectedBinder] = useState<number | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [initialLoading, setInitialLoading] = useState(true);
@@ -220,10 +222,14 @@ export default function Home() {
   return (
     <main className="min-h-screen w-screen overflow-hidden flex flex-col items-center justify-center">
       {!selectedBinder ? (
-        <div className="relative w-full max-w-5xl aspect-[16/9] mx-auto">
+        <div className="gallery-container">
           <img
             src="/Background.png"
             className="absolute inset-0 w-full h-full object-contain"
+            style={{ 
+              WebkitBackfaceVisibility: 'hidden',
+              backfaceVisibility: 'hidden'
+            }}
           />
           
           {/* Clickable binder areas */}
@@ -241,17 +247,19 @@ export default function Home() {
           ))}
           {/* Signature button */}
           <div 
-            className="absolute signature-container"
-            style={{ 
-              right: '35%',
-              bottom: '33%',
-              transform: 'rotate(-12deg)',
-              WebkitTransform: 'rotate(-12deg)',
-              transformOrigin: 'center'
+            className="absolute"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%) rotate(-12deg)',
+              width: '85px',
+              height: '30px',
+              zIndex: 50
             }}
           >
             <button 
-              onClick={() => window.location.href = '/about'}
+              onClick={() => router.push('/about')}
               className="w-full h-full p-0 border-0 bg-transparent cursor-pointer"
             >
               <img
