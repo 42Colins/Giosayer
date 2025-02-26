@@ -76,7 +76,7 @@ export default function About() {
         x: Math.random() * 60,  // Position from 20% to 80% horizontally
         y: Math.random() * 60,  // Position from 20% to 80% vertically
         rotation: 0,  // Rotation between -10 and 10 degrees
-        scale: 0.12 + Math.random() * 0.08 // Scale between 0.12 and 0.2
+        scale: 0.1 + Math.random() * 0.05 // Scale between 0.12 and 0.2
       }));
       setImagePositions(positions);
     };
@@ -125,31 +125,31 @@ export default function About() {
       {/* Back button */}
       <button
         onClick={() => window.location.href = '/'}
-        className="absolute top-8 left-8  z-10"
+        className="absolute top-8 left-8  z-10 text-xs font-['Adobe_Arabic']"
       >
         retour classeurs
       </button>
 
       {/* Center text */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center w-full max-w-2xl">
-        <a className=" text-lg block mb-4 font-['Adobe_Arabic'] font-bold">
+        <a className=" text-xs block mb-4 font-['Adobe_Arabic']">
           Classement numérique d'esquisses, d'idées, de plans et de recherches.
         </a>
       </div>
 
       {/* Bottom left corner info */}
-      <div className="absolute bottom-8 left-8 z-10">
+      <div className="absolute bottom-2 left-6 z-10">
         <div className="text-lg font-['Adobe_Arabic']">
-          <p className="text-xs  mb-4 font-bold">Contact : contact@g-archives.fr</p>
-          <div className="space-y-1">
-            <a href="https://www.instagram.com/giosayer/" target="_blank" className="text-sm  font-bold">
+          <p className="text-xs mb-[-2px]">contact@g-archives.fr</p>
+          <div> {/* Changed from space-y-1 to negative spacing */}
+            <a href="https://www.instagram.com/giosayer/" target="_blank" className="text-xs block mb-10px">
               Instagram
             </a>
-            <p className="text-xs font-bold">Droits d'auteur</p>
-            <p className="text-xs font-bold">Guillaume Deschamps</p>
-            <p className="text-xs font-bold">2019 2025</p>
-            <p className="text-xs font-bold">Site web</p>
-            <p className="text-xs font-bold">Colin Projean</p>
+            <p className="text-xs mb-[-2px] mt-8 font-['Adobe_Arabic']">Droits d'auteur</p>
+            <p className="text-xs mb-[-2px] font-['Adobe_Arabic']">Guillaume Deschamps</p>
+            <p className="text-xs mb-[-2px] font-['Adobe_Arabic']">2019 2025</p>
+            <p className="text-xs mb-[-2px] font-['Adobe_Arabic']">Site web</p>
+            <p className="text-xs font-['Adobe_Arabic']">Colin Projean</p>
           </div>
         </div>
       </div>
