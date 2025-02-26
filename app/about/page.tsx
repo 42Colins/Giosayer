@@ -1,6 +1,35 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { binders } from '../lib/data';  // Remove .tsx extension and import binders as named export
+
+// Helper function to get binder ID and correct image index
+const getBinderAndImageIndex = (imagePath: string) => {
+  console.log('Processing image path:', imagePath); // Debug log
+  
+  const binderMatch = imagePath.match(/binder0(\d)/);
+  const imageMatch = imagePath.match(/dessin(\d+)/);
+  
+  if (binderMatch && imageMatch) {
+    const binderId = parseInt(binderMatch[1]);
+    const imageNumber = parseInt(imageMatch[1]);
+    
+    // Find the binder and get the correct index
+    const binder = binders.find(b => b.id === binderId);
+    if (binder) {
+      const imageIndex = binder.content.findIndex(
+        item => item.image.includes(`dessin${imageNumber.toString().padStart(3, '0')}`)
+      );
+      
+      console.log('Found:', { binderId, imageIndex }); // Debug log
+      return {
+        binderId,
+        imageIndex: imageIndex >= 0 ? imageIndex : 0
+      };
+    }
+  }
+  return null;
+};
 
 const getAllImages = async () => {
   const images = [
@@ -44,10 +73,10 @@ export default function About() {
       const images = await getAllImages();
       const positions = images.map(src => ({
         src,
-        x: Math.random() * 200 - 50, // Position from -50% to 150% of viewport
-        y: Math.random() * 200 - 50, // Position from -50% to 150% of viewport
-        rotation: Math.random() * 360,
-        scale: 0.4 + Math.random() * 0.4 // Scale from 0.4 to 0.8
+        x: Math.random() * 60,  // Position from 20% to 80% horizontally
+        y: Math.random() * 60,  // Position from 20% to 80% vertically
+        rotation: 0,  // Rotation between -10 and 10 degrees
+        scale: 0.12 + Math.random() * 0.08 // Scale between 0.12 and 0.2
       }));
       setImagePositions(positions);
     };
@@ -55,24 +84,36 @@ export default function About() {
     loadImages();
   }, []);
 
+  const handleImageClick = (imagePath: string) => {
+    const imageInfo = getBinderAndImageIndex(imagePath);
+    if (imageInfo) {
+      // Store the information in localStorage to be retrieved by the main page
+      localStorage.setItem('selectedBinder', imageInfo.binderId.toString());
+      localStorage.setItem('selectedImageIndex', imageInfo.imageIndex.toString());
+      router.push('/');
+    }
+  };
+
   return (
     <main className="min-h-screen p-8 bg-white relative overflow-hidden">
-      {/* Background layer with random images */}
-      <div className="fixed inset-0 pointer-events-none" style={{ margin: '-25vw' }}> {/* Expand container beyond viewport */}
+      {/* Background layer with random images - removed pointer-events-none */}
+      <div className="fixed inset-0" style={{ margin: '-25vw' }}>
         {imagePositions.map((img, index) => (
           <img
             key={index}
             src={img.src}
             alt=""
-            className="absolute object-contain duration-1000"
+            className="absolute object-contain duration-1000 cursor-pointer hover:opacity-80 transition-opacity"
             style={{
               left: `${img.x}%`,
               top: `${img.y}%`,
               transform: `rotate(${img.rotation}deg) scale(${img.scale})`,
               maxWidth: '1000px',
               maxHeight: '1000px',
-              zIndex: 1
+              zIndex: 1,
+              pointerEvents: 'auto' // Explicitly enable pointer events
             }}
+            onClick={() => handleImageClick(img.src)}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.style.display = 'none';
@@ -84,29 +125,31 @@ export default function About() {
       {/* Back button */}
       <button
         onClick={() => window.location.href = '/'}
-        className="absolute top-8 right-8 text-gray-600 z-10"
+        className="absolute top-8 left-8  z-10"
       >
-        ← Back
+        retour classeurs
       </button>
 
-      <div className="relative z-10 max-w-2xl">
+      {/* Center text */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center w-full max-w-2xl">
+        <a className=" text-lg block mb-4 font-['Adobe_Arabic'] font-bold">
+          Classement numérique d'esquisses, d'idées, de plans et de recherches.
+        </a>
+      </div>
+
+      {/* Bottom left corner info */}
+      <div className="absolute bottom-8 left-8 z-10">
         <div className="text-lg font-['Adobe_Arabic']">
-          <div className="mb-4">
-            <h1 className="text-2xl font-light font-['Adobe_Arabic']">About me</h1>
-          </div>
-          <a className="text-gray-600 text-sm block mb-4 font-['Adobe_Arabic']">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris est dolor, commodo a iaculis in, ullamcorper eget nulla. In imperdiet ex et venenatis pellentesque.
-          </a>
-          <p className="text-xs text-gray-600 mb-4 font-['Adobe_Arabic']">Contact : giosayer@exemple.com</p>
-          <div className="mt-auto">
-            <a 
-              href="https://www.instagram.com/giosayer/" 
-              target="_blank"
-              className="text-sm text-gray-600 font-['Adobe_Arabic']"
-            >
-              © Giosayer
+          <p className="text-xs  mb-4 font-bold">Contact : contact@g-archives.fr</p>
+          <div className="space-y-1">
+            <a href="https://www.instagram.com/giosayer/" target="_blank" className="text-sm  font-bold">
+              Instagram
             </a>
-            <p className="text-xs text-gray-500 font-['Adobe_Arabic']">Website by Colin PROJEAN</p>
+            <p className="text-xs font-bold">Droits d'auteur</p>
+            <p className="text-xs font-bold">Guillaume Deschamps</p>
+            <p className="text-xs font-bold">2019 2025</p>
+            <p className="text-xs font-bold">Site web</p>
+            <p className="text-xs font-bold">Colin Projean</p>
           </div>
         </div>
       </div>

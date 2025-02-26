@@ -2,12 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Adobe Arabic';
+  src: url('/fonts/AdobeArabicRegular.woff2') format('woff2'),
+       url('/fonts/AdobeArabicRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
 }
 
 body {
+  font-family: 'Adobe Arabic', 'Times New Roman', serif;
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
 }

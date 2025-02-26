@@ -2,149 +2,10 @@
 import { useState, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-
-// Updated binder data with precise posi tions f or all 9 binders
-const binders = [
-  {
-    id: 1,
-    title: "Nature Collection",
-    description: "A series of landscape and wildlife photographs",
-    position: { left: '38.6%', width: '2.2%' , top: '40%', height: '20%'},
-    src: "/binder01/binder01.png",
-    content: [
-    ]
-  },
-  {
-    id: 2,
-    title: "Urban Series",
-    description: "City life and architecture studies",
-    position: { left: '41.1%', width: '2.2%' , top: '40%', height: '20%'},
-    src: "/binder02/binder02.png",
-    content: [
-      { image: "/binder02/dessin012.png"},
-      { image: "/binder02/dessin050.png"}
-    ]
-  },
-  {
-    id: 3,
-    title: "Seascapes",
-    description: "Ocean and coastal photography",
-    position: { left: '43.7%', width: '2.2%' , top: '40%', height: '20%' },
-    src: "/binder03/binder03.png",
-    content: [
-      { image: "/binder03/dessin009.png"},
-      { image: "/binder03/dessin023.png"},
-      { image: "/binder03/dessin024.png"},
-      { image: "/binder03/dessin025.png"},
-      { image: "/binder03/dessin027.png"},
-      { image: "/binder03/dessin028.png"},
-      { image: "/binder03/dessin029.png"},
-      { image: "/binder03/dessin030.png"},
-      { image: "/binder03/dessin031.png"},
-      { image: "/binder03/dessin032.png"},
-      { image: "/binder03/dessin033.png"},
-      { image: "/binder03/dessin034.png"},
-      { image: "/binder03/dessin045.png"},
-      { image: "/binder03/dessin046.png"},
-      { image: "/binder03/dessin052.png"}
-    ]
-  },
-  {
-    id: 4,
-    title: "Birds in Flight",
-    description: "Dynamic captures of birds in motion",
-    position: { left: '46.2%', width: '2.2%' , top: '40%', height: '20%'},
-    src: "/binder04/binder04.png",
-    content: [
-      { image: "/binder04/dessin015.png"},
-      { image: "/binder04/dessin017.png"},
-      { image: "/binder04/dessin020.png"},
-      { image: "/binder04/dessin021.png"},
-      { image: "/binder04/dessin061.png"}
-    ]
-  },
-  {
-    id: 5,
-    title: "Patterns",
-    description: "Natural and artificial pattern studies",
-    position: { left: '48.7%', width: '2.2%' , top: '40%', height: '20%' },
-    src: "/binder05/binder05.png",
-    content: [
-      { image: "/binder05/dessin014.png"},
-      { image: "/binder05/dessin016.png"}
-    ]
-  },
-  {
-    id: 6,
-    title: "Light Studies",
-    description: "Experiments with natural light",
-    position: { left: '51.2%', width: '2.2%' , top: '40%', height: '20%'},
-    src: "/binder06/binder06.png",
-    content: [
-      { image: "/binder06/dessin035.png"},
-      { image: "/binder06/dessin036.png"},
-      { image: "/binder06/dessin038.png"},
-      { image: "/binder06/dessin039.png"},
-      { image: "/binder06/dessin040.png"},
-      { image: "/binder06/dessin042.png"},
-      { image: "/binder06/dessin044.png"},
-      { image: "/binder06/dessin047.png"},
-      { image: "/binder06/dessin048.png"}
-    ]
-  },
-  {
-    id: 7,
-    title: "Abstract",
-    description: "Abstract interpretations of everyday scenes",
-    position: { left: '53.8%', width: '2.2%' , top: '40%', height: '20%' },
-    src: "/binder07/binder07.png",
-    content: [
-      { image: "/binder07/dessin005.png"},
-      { image: "/binder07/dessin007.png"},
-      { image: "/binder07/dessin008.png"},
-      { image: "/binder07/dessin051.png"},
-      { image: "/binder07/dessin053.png"},
-      { image: "/binder07/dessin054.png"},
-      { image: "/binder07/dessin055.png"},
-      { image: "/binder07/dessin058.png"},
-      { image: "/binder07/dessin059.png"},
-      { image: "/binder07/dessin060.png"},
-      { image: "/binder07/dessin062.png"}
-    ]
-  },
-  {
-    id: 8,
-    title: "Portraits",
-    description: "Artistic portrait photography",
-    position: { left: '56.4%', width: '2.2%' , top: '40%', height: '20%' },
-    src: "/binder08/binder08.png",
-    content: [
-      { image: "/binder08/dessin018.png"},
-      { image: "/binder08/dessin019.png"},
-      { image: "/binder08/dessin022.png"},
-      { image: "/binder08/dessin026.png"},
-      { image: "/binder08/dessin037.png"},
-      { image: "/binder08/dessin041.png"},
-      { image: "/binder08/dessin057.png"}
-    ]
-  },
-  {
-    id: 9,
-    title: "Minimalism",
-    description: "Minimalist photography studies",
-    position: { left: '59.5%', width: '2.2%' , top: '40%', height: '20%' },
-    src: "/binder09/binder09.png",
-    content: [
-      { image: "/binder09/dessin010.png"},
-      { image: "/binder09/dessin013.png"},
-      { image: "/binder09/dessin049.png"},
-      { image: "/binder09/dessin063.png"}
-    ]
-  }
-];
+import { binders }  from './lib/data'; // Import binders as named export
 
 const logo = {
-  position: { left: '41.1%', width: '2.2%' , top: '40%', height: '20%'}  
+  position: { left: '41.1%', width: '9%' , top: '10%', height: '80%'}  
 }
 
 const preloadImage = (src: string) => {
@@ -202,6 +63,20 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    // Check for stored binder selection
+    const storedBinder = localStorage.getItem('selectedBinder');
+    const storedImageIndex = localStorage.getItem('selectedImageIndex');
+    
+    if (storedBinder && storedImageIndex) {
+      setSelectedBinder(parseInt(storedBinder));
+      setCurrentImageIndex(parseInt(storedImageIndex));
+      // Clear the stored values
+      localStorage.removeItem('selectedBinder');
+      localStorage.removeItem('selectedImageIndex');
+    }
+  }, []);
+
   const handleBack = () => {
     setSelectedBinder(null);
     setCurrentImageIndex(0);
@@ -222,53 +97,56 @@ export default function Home() {
   return (
     <main className="min-h-screen w-screen overflow-hidden flex flex-col items-center justify-center">
       {!selectedBinder ? (
-        <div className="gallery-container">
-          <img
-            src="/Background.png"
-            className="absolute inset-0 w-full h-full object-contain"
-            style={{ 
-              WebkitBackfaceVisibility: 'hidden',
-              backfaceVisibility: 'hidden'
-            }}
-          />
-          
-          {/* Clickable binder areas */}
-          {binders.map((binder) => (
-            <div
-              key={binder.id}
-              className="absolute cursor-pointer transition-all duration-300 hover:opacity-75"
-              style={{
-                ...binder.position,
-                WebkitTransform: 'translateZ(0)',
-                transform: 'translateZ(0)'
+        <div className="relative flex items-center justify-center" style={{ width: '100%', height: '100vh' }}>
+          <div style={{ width: '500px', height: '281px', position: 'relative' }}> {/* Exact 16:9 ratio at 500px width */}
+            <img
+              src="/FondsiteBignoBack.png"
+              alt="Background"
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                objectFit: 'contain',
+                position: 'absolute',
+                top: 0,
+                left: 0
               }}
-              onClick={() => setSelectedBinder(binder.id)}
             />
-          ))}
-          {/* Signature button */}
-          <div 
-            className="absolute"
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%) rotate(-12deg)',
-              width: '85px',
-              height: '30px',
-              zIndex: 50
-            }}
-          >
-            <button 
+            
+            {/* Clickable binder areas - position with absolute dimensions */}
+            {binders.map((binder) => (
+              <div
+                key={binder.id}
+                className="absolute cursor-pointer transition-all duration-300 hover:opacity-75"
+                style={{
+                  left: `${parseFloat(binder.position.left) * 5}px`,
+                  top: `${parseFloat(binder.position.top) * 2.81}px`,
+                  width: `${parseFloat(binder.position.width) * 5}px`,
+                  height: `${parseFloat(binder.position.height) * 2.81}px`
+                }}
+                onClick={() => setSelectedBinder(binder.id)}
+              />
+            ))}
+            
+            {/* Signature button */}
+            <div 
+              className="absolute cursor-pointer"
+              style={{
+                bottom: '-5%', // Changed from top: '50%' to position from bottom
+                left: '90%',
+                transform: 'translate(-50%, 0) rotate(-12deg)', // Adjusted transform
+                width: '85px',
+                height: '30px',
+                zIndex: 50
+              }}
               onClick={() => router.push('/about')}
-              className="w-full h-full p-0 border-0 bg-transparent cursor-pointer"
             >
               <img
                 src="/signature.png"
                 alt="Signature"
-                className="w-full h-full object-contain"
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 draggable="false"
               />
-            </button>
+            </div>
           </div>
         </div>
       ) : (
