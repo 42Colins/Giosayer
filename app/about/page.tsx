@@ -125,7 +125,7 @@ export default function About() {
       {/* Back button */}
       <button
         onClick={() => window.location.href = '/'}
-        className="absolute top-8 left-8  z-10 text-xs font-['Adobe_Arabic']"
+        className="absolute top-3 left-3  z-10 text-xs font-['Adobe_Arabic']"
       >
         retour classeurs
       </button>
@@ -138,7 +138,7 @@ export default function About() {
       </div>
 
       {/* Bottom left corner info */}
-      <div className="absolute bottom-2 left-6 z-10">
+      <div className="absolute bottom-2 left-3 z-10">
         <div className="text-lg font-['Adobe_Arabic']">
           <p className="text-xs mb-[-2px]">contact@g-archives.fr</p>
           <div> {/* Changed from space-y-1 to negative spacing */}
