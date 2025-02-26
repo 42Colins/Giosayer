@@ -76,7 +76,7 @@ export default function About() {
         x: Math.random() * 60,  // Position from 20% to 80% horizontally
         y: Math.random() * 60,  // Position from 20% to 80% vertically
         rotation: 0,  // Rotation between -10 and 10 degrees
-        scale: 0.1 + Math.random() * 0.05 // Scale between 0.12 and 0.2
+        scale: 0.05 + Math.random() * 0.05 // Scale between 0.12 and 0.2
       }));
       setImagePositions(positions);
     };

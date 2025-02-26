@@ -111,7 +111,6 @@ export default function Home() {
                 left: 0
               }}
             />
-            
             {/* Clickable binder areas - position with absolute dimensions */}
             {binders.map((binder) => (
               <div
@@ -126,16 +125,15 @@ export default function Home() {
                 onClick={() => setSelectedBinder(binder.id)}
               />
             ))}
-            
             {/* Signature button */}
             <div 
               className="absolute cursor-pointer"
               style={{
-                bottom: '-5%', // Changed from top: '50%' to position from bottom
-                left: '90%',
-                transform: 'translate(-50%, 0) rotate(-12deg)', // Adjusted transform
-                width: '85px',
-                height: '30px',
+                bottom: '-27%', // Changed from top: '50%' to position from bottom
+                left: '92%',
+                transform: 'translate(-50%, 0) rotate(-10deg)', // Adjusted transform
+                width: '230px',  // Increased from 110px to 140px
+                height: '80px',  // Increased from 40px to 50px
                 zIndex: 50
               }}
               onClick={() => router.push('/about')}
