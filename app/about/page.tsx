@@ -145,7 +145,7 @@ export default function About() {
 
       {/* Center text */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center w-full max-w-2xl px-4">
-        <a className="text-xs sm:text-sm block mb-4 font-['Adobe_Arabic'] p-2" style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '4px' }}>
+        <a className="text-xs sm:text-sm block mb-4 font-['Adobe_Arabic'] p-2">
           Classement numérique d'esquisses, d'idées, de plans et de recherches.
         </a>
       </div>
@@ -155,15 +155,15 @@ export default function About() {
         className="fixed bottom-2 left-2 z-10 p-2 max-w-[95vw] sm:max-w-[300px]"
       >
         <div className="font-['Adobe_Arabic']">
-          <p className="text-xs sm:text-sm mb-0">contact@g-archives.fr</p>
+          <p className="text-xs sm:text-sm mb-[-5px]">contact@g-archives.fr</p>
           <a href="https://www.instagram.com/giosayer/" target="_blank" className="text-xs sm:text-sm block mb-2">
             Instagram
           </a>
-          <p className="text-xs sm:text-sm mb-0">Droits d'auteur</p>
-          <p className="text-xs sm:text-sm mb-0">Guillaume Deschamps</p>
-          <p className="text-xs sm:text-sm mb-0">2019 2025</p>
-          <p className="text-xs sm:text-sm mb-0">Site web</p>
-          <p className="text-xs sm:text-sm mb-0">Colin Projean</p>
+          <p className="text-xs sm:text-sm mb-[-5px]">Droits d'auteur</p>
+          <p className="text-xs sm:text-sm mb-[-5px]">Guillaume Deschamps</p>
+          <p className="text-xs sm:text-sm mb-[-5px]">2019 2025</p>
+          <p className="text-xs sm:text-sm mb-[-5px]">Site web</p>
+          <p className="text-xs sm:text-sm mb-[-5px]">Colin Projean</p>
         </div>
       </div>
     </main>

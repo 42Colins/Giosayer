@@ -128,10 +128,10 @@ export default function Home() {
               <div 
                 className="absolute cursor-pointer z-10"
                 style={{
-                  bottom: '-5%',
-                  right: '-5%',
+                  bottom: '-10%',
+                  right: '-10%',
                   transform: 'rotate(-10deg)',
-                  width: 'clamp(50px, calc(10vw + 20px), 230px)', // More responsive scaling
+                  width: 'clamp(75px, calc(15vw + 30px), 345px)', // Increased by 1.5x
                 }}
                 onClick={() => router.push('/about')}
               >
