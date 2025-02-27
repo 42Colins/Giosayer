@@ -99,7 +99,7 @@ export default function Home() {
       {!selectedBinder ? (
         <div className="relative flex items-center justify-center w-full h-screen p-2 sm:p-4 md:p-6">
           {/* Responsive container - scales based on screen size */}
-          <div className="relative w-full sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%] max-w-[800px]">
+          <div className="relative w-[85%] sm:w-[75%] md:w-[65%] lg:w-[55%] xl:w-[45%] max-w-[700px]">
             {/* Use aspect ratio to maintain proportions */}
             <div className="relative w-full pb-[56.25%]">
               <img
@@ -147,14 +147,14 @@ export default function Home() {
         </div>
       ) : (
         <div className="relative w-full h-screen">
-          {/* Back button - smaller on mobile */}
+          {/* Back button - significantly smaller on mobile */}
           <div className="fixed top-2 sm:top-4 left-2 sm:left-4 z-10">
             <button 
               onClick={handleBack}
               className="text-gray-600 flex"
               style={{ 
-                width: 'clamp(30px, 6vw, 80px)',
-                height: 'clamp(60px, 12vw, 160px)'
+                width: 'clamp(20px, 5vw, 60px)',
+                height: 'clamp(40px, 10vw, 120px)'
               }}
             >
               <img 
@@ -167,7 +167,7 @@ export default function Home() {
           
           {/* Content area - responsive sizing and padding */}
           <div className="flex justify-center items-center w-full h-full p-4 sm:p-8 md:p-12">
-            <div className="w-[95%] sm:w-4/5 md:w-3/4 lg:w-2/3 h-[70%] sm:h-3/4 flex justify-center items-center">
+            <div className="w-[85%] sm:w-3/4 md:w-2/3 lg:w-1/2 h-[70%] sm:h-3/4 flex justify-center items-center">
               {/* Image container */}
               <div
                 className="w-full h-full relative cursor-pointer flex justify-center items-center"
@@ -176,19 +176,12 @@ export default function Home() {
                 {currentImage && (
                   <img
                     src={currentImage.image}
-                    className="max-w-full max-h-full object-contain"
+                    className="max-w-full max-h-full w-auto h-auto object-contain"
                   />
                 )}
               </div>
             </div>
           </div>
-        </div>
-      )}
-
-      {initialLoading && (
-        <div className="fixed inset-0 bg-white flex flex-col items-center justify-center z-50">
-          <Loader2 className="h-6 w-6 sm:h-8 sm:w-8 animate-spin text-gray-700 mb-2 sm:mb-4" />
-          <p className="text-sm sm:text-base text-gray-700">Loading content... {loadingProgress}%</p>
         </div>
       )}
     </main>
