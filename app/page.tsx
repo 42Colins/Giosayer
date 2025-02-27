@@ -123,7 +123,7 @@ export default function Home() {
                   onClick={() => setSelectedBinder(binder.id)}
                 />
               ))}
-              
+
               {/* Signature button with responsive sizing */}
               <div 
                 className="absolute cursor-pointer z-10"
@@ -153,8 +153,8 @@ export default function Home() {
               onClick={handleBack}
               className="text-gray-600 flex"
               style={{ 
-                width: 'clamp(20px, 5vw, 60px)',
-                height: 'clamp(40px, 10vw, 120px)'
+                width: 'clamp(40px, 10vw, 120px)',
+                height: 'clamp(80px, 20vw, 240px)'
               }}
             >
               <img 
@@ -164,7 +164,6 @@ export default function Home() {
               />
             </button>
           </div>
-          
           {/* Content area - responsive sizing and padding */}
           <div className="flex justify-center items-center w-full h-full p-4 sm:p-8 md:p-12">
             <div className="w-[85%] sm:w-3/4 md:w-2/3 lg:w-1/2 h-[70%] sm:h-3/4 flex justify-center items-center">
