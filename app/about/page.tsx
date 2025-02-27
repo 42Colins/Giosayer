@@ -135,43 +135,35 @@ export default function About() {
         ))}
       </div>
 
-      {/* Back button - improved for mobile */}
+      {/* Back button */}
       <button
         onClick={() => window.location.href = '/'}
         className="absolute top-3 left-3 z-10 text-xs sm:text-sm font-['Adobe_Arabic'] p-2"
-        style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '4px' }} // Make more visible
       >
         classeurs
       </button>
 
-      {/* Center text - improved for mobile */}
+      {/* Center text */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center w-full max-w-2xl px-4">
         <a className="text-xs sm:text-sm block mb-4 font-['Adobe_Arabic'] p-2" style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '4px' }}>
           Classement numérique d'esquisses, d'idées, de plans et de recherches.
         </a>
       </div>
 
-      {/* Bottom left corner info - fixed for mobile view */}
+      {/* Bottom left corner info - fixed size issue */}
       <div 
-        className="fixed bottom-2 left-2 z-10 p-2 max-w-[95vw] sm:max-w-[300px]" 
-        style={{ 
-          background: 'rgba(255,255,255,0.7)', 
-          borderRadius: '4px',
-          fontSize: 'clamp(9px, 2.5vw, 12px)' // Responsive font size
-        }}
+        className="fixed bottom-2 left-2 z-10 p-2 max-w-[95vw] sm:max-w-[300px]"
       >
-        <div className="text-lg font-['Adobe_Arabic']">
-          <p className="mb-[-2px]">contact@g-archives.fr</p>
-          <div> 
-            <a href="https://www.instagram.com/giosayer/" target="_blank" className="block mb-1">
-              Instagram
-            </a>
-            <p className="mb-[-2px] mt-2 font-['Adobe_Arabic']">Droits d'auteur</p>
-            <p className="mb-[-2px] font-['Adobe_Arabic']">Guillaume Deschamps</p>
-            <p className="mb-[-2px] font-['Adobe_Arabic']">2019 2025</p>
-            <p className="mb-[-2px] font-['Adobe_Arabic']">Site web</p>
-            <p className="font-['Adobe_Arabic']">Colin Projean</p>
-          </div>
+        <div className="font-['Adobe_Arabic']">
+          <p className="text-xs sm:text-sm mb-0">contact@g-archives.fr</p>
+          <a href="https://www.instagram.com/giosayer/" target="_blank" className="text-xs sm:text-sm block mb-2">
+            Instagram
+          </a>
+          <p className="text-xs sm:text-sm mb-0">Droits d'auteur</p>
+          <p className="text-xs sm:text-sm mb-0">Guillaume Deschamps</p>
+          <p className="text-xs sm:text-sm mb-0">2019 2025</p>
+          <p className="text-xs sm:text-sm mb-0">Site web</p>
+          <p className="text-xs sm:text-sm mb-0">Colin Projean</p>
         </div>
       </div>
     </main>
