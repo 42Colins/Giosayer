@@ -2,24 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Adobe Arabic';
-  src: url('/fonts/AdobeArabicRegular.woff2') format('woff2'),
-       url('/fonts/AdobeArabicRegular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+@layer base {
+  @font-face {
+    font-family: 'Adobe Arabic';
+    src: url('/fonts/AdobeArabicRegular.woff2') format('woff2'),
+         url('/fonts/AdobeArabicRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-rgb: 255, 255, 255;
+  }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
-}
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+  }
 
-body {
-  font-family: 'Adobe Arabic', 'Times New Roman', serif;
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  img {
+    display: block;
+    max-width: 100%;
+  }
 }
 
 /* Cross-browser normalization */
@@ -40,6 +52,21 @@ body {
   width: auto;
   height: auto;
   object-fit: contain;
+}
+
+/* Fix for flex container issues */
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+/* Fix for absolute positioning */
+.absolute {
+  position: absolute;
 }
 
 /* Safari specific fixes */

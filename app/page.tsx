@@ -97,71 +97,77 @@ export default function Home() {
   return (
     <main className="min-h-screen w-screen overflow-hidden flex flex-col items-center justify-center">
       {!selectedBinder ? (
-        <div className="relative flex items-center justify-center" style={{ width: '100%', height: '100vh' }}>
-          <div style={{ width: '500px', height: '281px', position: 'relative' }}> {/* Exact 16:9 ratio at 500px width */}
-            <img
-              src="/FondsiteBignoBack.png"
-              alt="Background"
-              style={{ 
-                width: '100%', 
-                height: '100%', 
-                objectFit: 'contain',
-                position: 'absolute',
-                top: 0,
-                left: 0
-              }}
-            />
-            {/* Clickable binder areas - position with absolute dimensions */}
-            {binders.map((binder) => (
-              <div
-                key={binder.id}
-                className="absolute cursor-pointer transition-all duration-300 hover:opacity-75"
-                style={{
-                  left: `${parseFloat(binder.position.left) * 5}px`,
-                  top: `${parseFloat(binder.position.top) * 2.81}px`,
-                  width: `${parseFloat(binder.position.width) * 5}px`,
-                  height: `${parseFloat(binder.position.height) * 2.81}px`
-                }}
-                onClick={() => setSelectedBinder(binder.id)}
-              />
-            ))}
-            {/* Signature button */}
-            <div 
-              className="absolute cursor-pointer"
-              style={{
-                bottom: '-27%', // Changed from top: '50%' to position from bottom
-                left: '92%',
-                transform: 'translate(-50%, 0) rotate(-10deg)', // Adjusted transform
-                width: '230px',  // Increased from 110px to 140px
-                height: '80px',  // Increased from 40px to 50px
-                zIndex: 50
-              }}
-              onClick={() => router.push('/about')}
-            >
+        <div className="relative flex items-center justify-center w-full h-screen p-2 sm:p-4 md:p-6">
+          {/* Responsive container - scales based on screen size */}
+          <div className="relative w-full sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%] max-w-[800px]">
+            {/* Use aspect ratio to maintain proportions */}
+            <div className="relative w-full pb-[56.25%]">
               <img
-                src="/signature.png"
-                alt="Signature"
-                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                src="/FondsiteBignoBack.png"
+                alt="Background"
+                className="absolute top-0 left-0 w-full h-full object-contain"
                 draggable="false"
               />
+              
+              {/* Clickable binder areas with responsive positioning */}
+              {binders.map((binder) => (
+                <div
+                  key={binder.id}
+                  className="absolute cursor-pointer transition-all duration-300 hover:opacity-75"
+                  style={{
+                    left: binder.position.left,
+                    top: binder.position.top,
+                    width: binder.position.width,
+                    height: binder.position.height
+                  }}
+                  onClick={() => setSelectedBinder(binder.id)}
+                />
+              ))}
+              
+              {/* Signature button with responsive sizing */}
+              <div 
+                className="absolute cursor-pointer z-10"
+                style={{
+                  bottom: '-10%',
+                  right: '0',
+                  transform: 'rotate(-10deg)',
+                  width: 'clamp(80px, 15vw, 230px)'
+                }}
+                onClick={() => router.push('/about')}
+              >
+                <img
+                  src="/signature.png"
+                  alt="Signature"
+                  className="w-full h-auto object-contain"
+                  draggable="false"
+                />
+              </div>
             </div>
           </div>
         </div>
       ) : (
-        <div className="relative w-full max-w-7xl">
-          <div className="fixed top-4 left-4">
+        <div className="relative w-full h-screen">
+          {/* Back button - smaller on mobile */}
+          <div className="fixed top-2 sm:top-4 left-2 sm:left-4 z-10">
             <button 
               onClick={handleBack}
-              className="text-gray-600 flex w-24 h-48"
+              className="text-gray-600 flex"
+              style={{ 
+                width: 'clamp(30px, 6vw, 80px)',
+                height: 'clamp(60px, 12vw, 160px)'
+              }}
             >
               <img 
                 src={selectedBinderContent?.src}
                 className="w-full h-full object-contain" 
+                alt="Back to home"
               />
             </button>
           </div>
-          <div className="flex justify-center items-center w-full h-screen">
-            <div className="w-2/3 h-2/3 flex justify-center items-center">
+          
+          {/* Content area - responsive sizing and padding */}
+          <div className="flex justify-center items-center w-full h-full p-4 sm:p-8 md:p-12">
+            <div className="w-[95%] sm:w-4/5 md:w-3/4 lg:w-2/3 h-[70%] sm:h-3/4 flex justify-center items-center">
               {/* Image container */}
               <div
                 className="w-full h-full relative cursor-pointer flex justify-center items-center"
@@ -170,12 +176,19 @@ export default function Home() {
                 {currentImage && (
                   <img
                     src={currentImage.image}
-                    className="max-w-full max-h-full w-auto h-auto object-contain"
+                    className="max-w-full max-h-full object-contain"
                   />
                 )}
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {initialLoading && (
+        <div className="fixed inset-0 bg-white flex flex-col items-center justify-center z-50">
+          <Loader2 className="h-6 w-6 sm:h-8 sm:w-8 animate-spin text-gray-700 mb-2 sm:mb-4" />
+          <p className="text-sm sm:text-base text-gray-700">Loading content... {loadingProgress}%</p>
         </div>
       )}
     </main>
