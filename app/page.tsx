@@ -129,7 +129,7 @@ export default function Home() {
                 className="absolute cursor-pointer z-10"
                 style={{
                   bottom: '-10%',
-                  right: '0',
+                  right: '-5%',
                   transform: 'rotate(-10deg)',
                   width: 'clamp(80px, 15vw, 230px)'
                 }}

@@ -64,24 +64,37 @@ export default function About() {
     src: string;
     x: number;
     y: number;
-    rotation: number;
     scale: number;
   }>>([]);
 
   useEffect(() => {
     const loadImages = async () => {
       const images = await getAllImages();
+      
+      // Adjust positioning for different screen sizes
+      const isMobile = window.innerWidth < 768;
+      
       const positions = images.map(src => ({
         src,
-        x: Math.random() * 60,  // Position from 20% to 80% horizontally
-        y: Math.random() * 60,  // Position from 20% to 80% vertically
-        rotation: 0,  // Rotation between -10 and 10 degrees
-        scale: 0.1 + Math.random() * 0.1 // Scale between 0.12 and 0.2
+        // Keep images within 20-80% range on mobile (or 10-90% on desktop)
+        x: 0 + Math.random() * 100, 
+        y: 0 + Math.random() * 100,
+        scale: isMobile ? 0.2 + Math.random() * 0.2 : 0.2 + Math.random() * 0.2
       }));
       setImagePositions(positions);
     };
 
     loadImages();
+    
+    // Add resize handler to reposition when screen size changes
+    const handleResize = () => {
+      loadImages();
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const handleImageClick = (imagePath: string) => {
@@ -95,9 +108,9 @@ export default function About() {
   };
 
   return (
-    <main className="min-h-screen p-8 bg-white relative overflow-hidden">
-      {/* Background layer with random images - removed pointer-events-none */}
-      <div className="fixed inset-0" style={{ margin: '-25vw' }}>
+    <main className="min-h-screen p-4 sm:p-8 bg-white relative overflow-hidden">
+      {/* Background layer with random images - adjusted for mobile */}
+      <div className="fixed inset-0" style={{ margin: '-5vw sm:-15vw md:-25vw' }}>
         {imagePositions.map((img, index) => (
           <img
             key={index}
@@ -107,11 +120,11 @@ export default function About() {
             style={{
               left: `${img.x}%`,
               top: `${img.y}%`,
-              transform: `rotate(${img.rotation}deg) scale(${img.scale})`,
-              maxWidth: '1000px',
-              maxHeight: '1000px',
+              transform: `scale(${img.scale})`,
+              maxWidth: 'min(300px, 50vw)', // Limit maximum width on mobile
+              maxHeight: 'min(300px, 50vh)', // Limit maximum height on mobile
               zIndex: 1,
-              pointerEvents: 'auto' // Explicitly enable pointer events
+              pointerEvents: 'auto'
             }}
             onClick={() => handleImageClick(img.src)}
             onError={(e) => {
@@ -122,23 +135,24 @@ export default function About() {
         ))}
       </div>
 
-      {/* Back button */}
+      {/* Back button - improved for mobile */}
       <button
         onClick={() => window.location.href = '/'}
-        className="absolute top-3 left-3  z-10 text-xs font-['Adobe_Arabic']"
+        className="absolute top-3 left-3 z-10 text-xs sm:text-sm font-['Adobe_Arabic'] p-2"
+        style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '4px' }} // Make more visible
       >
         retour classeurs
       </button>
 
-      {/* Center text */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center w-full max-w-2xl">
-        <a className=" text-xs block mb-4 font-['Adobe_Arabic']">
+      {/* Center text - improved for mobile */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center w-full max-w-2xl px-4">
+        <a className="text-xs sm:text-sm block mb-4 font-['Adobe_Arabic'] p-2" style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '4px' }}>
           Classement numérique d'esquisses, d'idées, de plans et de recherches.
         </a>
       </div>
 
-      {/* Bottom left corner info */}
-      <div className="absolute bottom-2 left-3 z-10">
+      {/* Bottom left corner info - improved for mobile */}
+      <div className="absolute bottom-2 left-3 z-10 p-2" style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '4px' }}>
         <div className="text-lg font-['Adobe_Arabic']">
           <p className="text-xs mb-[-2px]">contact@g-archives.fr</p>
           <div> {/* Changed from space-y-1 to negative spacing */}
