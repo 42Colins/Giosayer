@@ -124,14 +124,14 @@ export default function Home() {
                 />
               ))}
 
-              {/* Signature button with responsive sizing */}
+              {/* Signature button with improved responsive sizing */}
               <div 
                 className="absolute cursor-pointer z-10"
                 style={{
-                  bottom: '-10%',
+                  bottom: '-5%',
                   right: '-5%',
                   transform: 'rotate(-10deg)',
-                  width: 'clamp(80px, 15vw, 230px)'
+                  width: 'clamp(50px, calc(10vw + 20px), 230px)', // More responsive scaling
                 }}
                 onClick={() => router.push('/about')}
               >

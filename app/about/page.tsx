@@ -141,7 +141,7 @@ export default function About() {
         className="absolute top-3 left-3 z-10 text-xs sm:text-sm font-['Adobe_Arabic'] p-2"
         style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '4px' }} // Make more visible
       >
-        retour classeurs
+        classeurs
       </button>
 
       {/* Center text - improved for mobile */}
@@ -151,19 +151,26 @@ export default function About() {
         </a>
       </div>
 
-      {/* Bottom left corner info - improved for mobile */}
-      <div className="absolute bottom-2 left-3 z-10 p-2" style={{ background: 'rgba(255,255,255,0.7)', borderRadius: '4px' }}>
+      {/* Bottom left corner info - fixed for mobile view */}
+      <div 
+        className="fixed bottom-2 left-2 z-10 p-2 max-w-[95vw] sm:max-w-[300px]" 
+        style={{ 
+          background: 'rgba(255,255,255,0.7)', 
+          borderRadius: '4px',
+          fontSize: 'clamp(9px, 2.5vw, 12px)' // Responsive font size
+        }}
+      >
         <div className="text-lg font-['Adobe_Arabic']">
-          <p className="text-xs mb-[-2px]">contact@g-archives.fr</p>
-          <div> {/* Changed from space-y-1 to negative spacing */}
-            <a href="https://www.instagram.com/giosayer/" target="_blank" className="text-xs block mb-10px">
+          <p className="mb-[-2px]">contact@g-archives.fr</p>
+          <div> 
+            <a href="https://www.instagram.com/giosayer/" target="_blank" className="block mb-1">
               Instagram
             </a>
-            <p className="text-xs mb-[-2px] mt-8 font-['Adobe_Arabic']">Droits d'auteur</p>
-            <p className="text-xs mb-[-2px] font-['Adobe_Arabic']">Guillaume Deschamps</p>
-            <p className="text-xs mb-[-2px] font-['Adobe_Arabic']">2019 2025</p>
-            <p className="text-xs mb-[-2px] font-['Adobe_Arabic']">Site web</p>
-            <p className="text-xs font-['Adobe_Arabic']">Colin Projean</p>
+            <p className="mb-[-2px] mt-2 font-['Adobe_Arabic']">Droits d'auteur</p>
+            <p className="mb-[-2px] font-['Adobe_Arabic']">Guillaume Deschamps</p>
+            <p className="mb-[-2px] font-['Adobe_Arabic']">2019 2025</p>
+            <p className="mb-[-2px] font-['Adobe_Arabic']">Site web</p>
+            <p className="font-['Adobe_Arabic']">Colin Projean</p>
           </div>
         </div>
       </div>
