@@ -127,7 +127,7 @@ export default function Home() {
               <div 
                 className="absolute cursor-pointer z-10"
                 style={{
-                  bottom: '-10%',
+                  bottom: '-15%',
                   right: '-10%',
                   transform: 'rotate(-10deg)',
                   width: 'clamp(100px, calc(20vw + 40px), 460px)',
@@ -163,9 +163,10 @@ export default function Home() {
               />
             </button>
           </div>
-          {/* Content area - responsive sizing and padding */}
-          <div className="flex justify-center items-center w-full h-full p-4 sm:p-8 md:p-12">
-            <div className="w-[85%] sm:w-3/4 md:w-2/3 lg:w-1/2 h-[70%] sm:h-3/4 flex justify-center items-center">
+          
+          {/* Content area - increased size for larger image display */}
+          <div className="flex justify-center items-center w-full h-full p-2 sm:p-4 md:p-6">
+            <div className="w-[95%] sm:w-[85%] md:w-3/4 lg:w-2/3 h-[85%] sm:h-[85%] flex justify-center items-center">
               {/* Image container */}
               <div
                 className="w-full h-full relative cursor-pointer flex justify-center items-center"
