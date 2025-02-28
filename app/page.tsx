@@ -99,8 +99,7 @@ export default function Home() {
       {!selectedBinder ? (
         <div className="relative flex items-center justify-center w-full h-screen p-2 sm:p-4 md:p-6">
           {/* Responsive container - scales based on screen size */}
-          <div className="relative w-[85%] sm:w-[75%] md:w-[65%] lg:w-[55%] xl:w-[45%] max-w-[700px]">
-            {/* Use aspect ratio to maintain proportions */}
+          <div className="relative w-[70%] sm:w-[75%] md:w-[65%] lg:w-[55%] xl:w-[45%] max-w-[700px]">            {/* Use aspect ratio to maintain proportions */}
             <div className="relative w-full pb-[56.25%]">
               <img
                 src="/FondsiteBignoBack.png"
@@ -131,7 +130,7 @@ export default function Home() {
                   bottom: '-10%',
                   right: '-10%',
                   transform: 'rotate(-10deg)',
-                  width: 'clamp(75px, calc(15vw + 30px), 345px)', // Increased by 1.5x
+                  width: 'clamp(100px, calc(20vw + 40px), 460px)',
                 }}
                 onClick={() => router.push('/about')}
               >
@@ -153,8 +152,8 @@ export default function Home() {
               onClick={handleBack}
               className="text-gray-600 flex"
               style={{ 
-                width: 'clamp(40px, 10vw, 120px)',
-                height: 'clamp(80px, 20vw, 240px)'
+                width: 'clamp(60px, 15vw, 180px)',
+                height: 'clamp(110px, 30vw, 360px)'
               }}
             >
               <img 

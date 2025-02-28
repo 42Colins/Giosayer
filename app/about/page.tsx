@@ -155,15 +155,15 @@ export default function About() {
         className="fixed bottom-2 left-2 z-10 p-2 max-w-[95vw] sm:max-w-[300px]"
       >
         <div className="font-['Adobe_Arabic']">
-          <p className="text-xs sm:text-sm mb-[-5px]">contact@g-archives.fr</p>
+          <p className="text-xs sm:text-sm mb-[-3px]">contact@g-archives.fr</p>
           <a href="https://www.instagram.com/giosayer/" target="_blank" className="text-xs sm:text-sm block mb-2">
             Instagram
           </a>
-          <p className="text-xs sm:text-sm mb-[-5px]">Droits d'auteur</p>
-          <p className="text-xs sm:text-sm mb-[-5px]">Guillaume Deschamps</p>
-          <p className="text-xs sm:text-sm mb-[-5px]">2019 2025</p>
-          <p className="text-xs sm:text-sm mb-[-5px]">Site web</p>
-          <p className="text-xs sm:text-sm mb-[-5px]">Colin Projean</p>
+          <p className="text-xs sm:text-sm mb-[-3px]">Droits d'auteur</p>
+          <p className="text-xs sm:text-sm mb-[-3px]">Guillaume Deschamps</p>
+          <p className="text-xs sm:text-sm mb-[-3px]">2019 2025</p>
+          <p className="text-xs sm:text-sm mb-[-3px]">Site web</p>
+          <p className="text-xs sm:text-sm mb-[-3px]">Colin Projean</p>
         </div>
       </div>
     </main>
